@@ -2,11 +2,14 @@ package de.andreasschrade.androidtemplate.ui.quote;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
+import de.andreasschrade.androidtemplate.ui.quote.Global;
 import de.andreasschrade.androidtemplate.R;
 import de.andreasschrade.androidtemplate.dummy.DummyContent;
 import de.andreasschrade.androidtemplate.ui.base.BaseActivity;
@@ -54,8 +57,10 @@ public class ListActivity extends BaseActivity implements ArticleListFragment.Ca
             getFragmentManager().beginTransaction().replace(R.id.article_detail_container, fragment).commit();
         } else {
             // Start the detail activity in single pane mode.
+            String s = getIntent().getStringExtra("edit");
             Intent detailIntent = new Intent(this, ArticleDetailActivity.class);
             detailIntent.putExtra(ArticleDetailFragment.ARG_ITEM_ID, id);
+            detailIntent.putExtra("edit",s);
             startActivity(detailIntent);
         }
     }

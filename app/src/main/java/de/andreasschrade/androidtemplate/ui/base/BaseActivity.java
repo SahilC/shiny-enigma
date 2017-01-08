@@ -14,6 +14,7 @@ import de.andreasschrade.androidtemplate.R;
 import de.andreasschrade.androidtemplate.ui.SettingsActivity;
 import de.andreasschrade.androidtemplate.ui.ViewSamplesActivity;
 import de.andreasschrade.androidtemplate.ui.quote.ListActivity;
+import de.andreasschrade.androidtemplate.ui.quote.PlacePickerActivity;
 
 import static de.andreasschrade.androidtemplate.util.LogUtil.logD;
 import static de.andreasschrade.androidtemplate.util.LogUtil.makeLogTag;
@@ -105,7 +106,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void goToNavDrawerItem(int item) {
         switch (item) {
             case R.id.nav_quotes:
-                startActivity(new Intent(this, ListActivity.class));
+                startActivity(new Intent(this, ListActivity.class).putExtra("edit","true"));
                 finish();
                 break;
             case R.id.nav_samples:
@@ -113,6 +114,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 break;
             case R.id.nav_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
+                break;
+            case R.id.nav_action:
+                startActivity(new Intent(this, ListActivity.class).putExtra("edit", "false"));
+                finish();
+                break;
+            case R.id.nav_social:
+                startActivity(new Intent(this, ListActivity.class).putExtra("edit", "false"));
+                finish();
+                break;
+            case R.id.nav_eccentric:
+                startActivity(new Intent(this, ListActivity.class).putExtra("edit", "false"));
+                finish();
                 break;
         }
     }
